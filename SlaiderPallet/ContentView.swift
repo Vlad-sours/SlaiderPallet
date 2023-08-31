@@ -15,32 +15,32 @@ struct ContentView: View {
     @FocusState private var focusedTextField: Focus?
     
     var body: some View {
-        ZStack{
-            VStack(spacing: 40) {
-                ColorView(red: red, green: green, blue: blue)
-                
-                VStack {
-                    SliderView(value: $red, color: .red)
-                        .focused($focusedTextField, equals: .red)
-                    SliderView(value: $green, color: .green)
-                        .focused($focusedTextField, equals: .green)
-                    SliderView(value: $blue, color: .blue)
-                        .focused($focusedTextField, equals: .blue)
-                }
-                .frame(height: 155)
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Button("Done") {
-                            focusedTextField = nil
-                        }
+        
+        VStack(spacing: 40) {
+            ColorView(red: red, green: green, blue: blue)
+            
+            VStack {
+                SliderView(value: $red, color: .red)
+                    .focused($focusedTextField, equals: .red)
+                SliderView(value: $green, color: .green)
+                    .focused($focusedTextField, equals: .green)
+                SliderView(value: $blue, color: .blue)
+                    .focused($focusedTextField, equals: .blue)
+            }
+            .frame(height: 155)
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Button("Done") {
+                        focusedTextField = nil
                     }
                 }
-                Spacer()
             }
-            .padding()
+            Spacer()
         }
+        .padding()
     }
 }
+
 
 extension ContentView {
     private enum Focus {
